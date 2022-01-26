@@ -103,7 +103,7 @@ Employee.prototype.render = function () {
     );
 
     document.write(
-      `<img src = "${this.image}"`
+      `<img src = "${allEmployees[i].image}"`
     );
 
     document.write("<br>");
