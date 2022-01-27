@@ -4,10 +4,6 @@ let allEmployees = [];
 let employeesDiv = document.getElementById("employeesDiv");
 let form = document.getElementById("form");
 
-
-
-
-
 function Employee(employeeID, fullName, department, level, img) {
   this.employeeID = employeeID;
   this.fullName = fullName;
@@ -43,6 +39,7 @@ Employee.prototype.getSalary = function () {
 Employee.prototype.fourDigitsGenerator = function () {
   return (this.employeeID = Math.floor(1000 + Math.random() * 9000));
 };
+
 
 Employee.prototype.addEmployees = function()
 {
@@ -83,9 +80,6 @@ Employee.prototype.addEmployees = function()
   employeesDiv.appendChild(newDiv);
   salary.textContent = "Salary: " + this.getSalary();
 
-  
-
-  
 
 }
 
@@ -106,8 +100,7 @@ function handleSubmit(event)
   newEmployee.fourDigitsGenerator();
   newEmployee.getSalary();
   newEmployee.addEmployees();
-  
-  
+  newEmployee.saveToLocalStorage();
 
 }
 
@@ -123,30 +116,38 @@ form.addEventListener("submit", handleSubmit);
     element.addEmployees();
     
   });
-  // document.write("<h1>EMPLOYEES</h1>");
-
-  // for (let i = 0; i < allEmployees.length; i++) {
-  //   document.write(
-  //     `<p> <b>Empolyee ID is: ${allEmployees[i].fourDigitsGenerator()}</b></p>`
-  //   );
-  //   document.write(
-  //     `<p> <b>Empolyee name is: ${allEmployees[i].fullName}</b></p>`
-  //   );
-  //   document.write(
-  //     `<p> <b>${allEmployees[i].fullName} Salary is: ${allEmployees[
-  //       i
-  //     ].getSalary()}</b></p>`
-  //   );
-   
-
-  //   document.write(
-  //     `<img src = "${allEmployees[i].image}" style = "width:100px; height:100px";`
-  //   );
-
-  //   document.write("<br>");
-    
-  // }
+ 
 };
+
+
+
+
+Employee.prototype.saveToLocalStorage = function()
+{
+  let stringifiedData = JSON.stringify(allEmployees);
+    localStorage.setItem("employees", stringifiedData);
+}
+
+function getData() {
+  let data = localStorage.getItem("employees");
+  let parseData = JSON.parse(data);
+  if (parseData != null) {
+      console.log(parseData);
+     
+      for (let i = 0; i < parseData.length; i++) {
+          console.log(parseData[i]);
+          new Employee(parseData[i].employeeID, parseData[i].fullName, parseData[i].departments, parseData[i].level, parseData[i].image)
+      }
+  }
+  renderAll();  
+}
+
+
+
+
+
+
+
 
 let ghazi = new Employee(1000, "GhaziSamer", "Administration", "Senior", "./assets/ghaziSamer.png");
 let lana = new Employee(1001, "LanaAli", "Finance", "Senior","./assets/LanaAli.png");
@@ -154,7 +155,7 @@ let tamara = new Employee(1002, "TamaraAyoub", "Marketing", "Senior","./assets/T
 let safi = new Employee(1003, "SafiWalid", "Administration", "Mid-Senior","./assets/SafiWalid.png");
 
 
-renderAll();
 
+getData();
 
 
