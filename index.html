@@ -1,73 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HR management system</title>
-  </head>
 
-  <body style="background-color: #d7d2ec">
-    <header>
-      <p
-        style="float: right"
-        class="navbar navbar-expand-sm bg-light fixed-top"
-      >
-        <a href="#">Home</a> | <a href="accounting.html">Accounting</a>
-      </p>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>HR-management-system</title>
+</head>
+
+<body>
+    <header class="container">
+        <img src="./images/recruiter.png" alt="" class="header-logo" style="margin-left: 40px;">
+
+        <nav class="header-nav" style="margin-right: 40px;">
+            <a href="./index.html">Home</a>
+            <a href="./accounting.html">Accounting</a>
+
+        </nav>
     </header>
-    <main>
-    
-      
+
+    <br><br><br><br><br><br>
+
+    <main style="margin-left: 50px;">
+        <h2>Add New Employee</h2><br>
+
+
         <form id="form">
-          <label for="fullName">full Name: </label>
-          <input id="fullName" type="text" name="fullName" /> <br /><br />
+            <label for="fullName">Employee Name</label><br>
+            <input type="text" name="fullName" id="fullName" placeholder="Enter Employee Name">
+            <br><br>
+            <label for="department">Department</label><br>
+            <select name="department" id="department" required="" style="width: 120px;">
+                            <option value="Administration">Administration</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Development">Development</option>
+                            <option value="Finance">Finance</option>
+                        </select>
+            <br><br>
+            <label for="level">Level</label><br>
+            <select name="level" id="level" required="" style="width: 120px;">
+                            <option value="Junior">Junior</option>
+                            <option value="Mid-Senior">Mid-Senior</option>
+                            <option value="Senior">Senior</option>
+            </select>
+            <br><br>
+            <label for="image">Image</label><br>
+            <input type="text" name="image" id="image" placeholder="Image url">
 
-          <label for="Departments">Choose a Department:</label>
-          <select id="Departments" name="Departments">
-            <option selected disabled hidden>Select an Option</option>
-            <option>Administration</option>
-            <option>Marketing</option>
-            <option>Development</option>
-            <option>Finance</option>
-          </select>
-          <br />
-          <br />
-          <label for="Level">Choose a Level:</label>
-          <select id="Level" name="Level">
-            <option selected disabled hidden>Select an Option</option>
-            <option>Junior</option>
-            <option>Mid-Senior</option>
-            <option>Senior</option>
-          </select>
-          <br />
-          <br />
-          <label for="images">Image: </label>
-          <input id="images" type="text" name="images" />
-          <br />
-          <br />
-          <button type="submit">Add Employee</button>
-
-          
-          <div id="employeesDiv"></div>
+            <br><br><br>
+            <input type="submit" value="Add" style="width: 50px;">
 
         </form>
-        
-    </main>
 
-    
-    <script src="app.js"></script>
-    <footer
-      style="
-        display: flex;
-        justify-content: space-around;
-        background-color: black;
-        color: white;
-        margin-top: 700px;
-      "
-    >
-      <p>© 2022 ASAC</p>
+        <div id="divEmployee"></div>
+
+        <script src="./js/app.js"></script>
+
+
+
+
+      
+
+
+
+    </main>
+    <footer>
+        <br>
+        <p> Rights Reserved ASAC 2022© copyright </p>
+        <br>
+        <div>
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-google"></a>
+            <a href="#" class="fa fa-linkedin"></a>
+        </div>
     </footer>
-    
-  </body>
+
+</body>
+
 </html>
